@@ -1,0 +1,384 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background: #050510;
+    color: white;
+}
+
+/* Background */
+
+.background {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 20% 30%, #35107855, transparent 30%),
+        radial-gradient(circle at 80% 70%, #0066ff44, transparent 30%),
+        #050510;
+}
+
+.background span {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: #00f7ff;
+    border-radius: 50%;
+    box-shadow: 0 0 15px #00f7ff;
+    animation: float 10s linear infinite;
+}
+
+.background span:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.background span:nth-child(2) {
+    left: 25%;
+    animation-delay: 2s;
+}
+
+.background span:nth-child(3) {
+    left: 40%;
+    animation-delay: 4s;
+}
+
+.background span:nth-child(4) {
+    left: 55%;
+    animation-delay: 1s;
+}
+
+.background span:nth-child(5) {
+    left: 70%;
+    animation-delay: 3s;
+}
+
+.background span:nth-child(6) {
+    left: 80%;
+    animation-delay: 5s;
+}
+
+.background span:nth-child(7) {
+    left: 90%;
+    animation-delay: 7s;
+}
+
+.background span:nth-child(8) {
+    left: 15%;
+    animation-delay: 6s;
+}
+
+@keyframes float {
+    0% {
+        bottom: -20px;
+        opacity: 0;
+        transform: translateX(0);
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        bottom: 110%;
+        opacity: 0;
+        transform: translateX(100px);
+    }
+}
+
+/* Cursor glow */
+
+.cursor-glow {
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: #00eaff18;
+    filter: blur(60px);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+}
+
+/* Main */
+
+.container {
+    position: relative;
+    z-index: 5;
+}
+
+/* Card */
+
+.profile-card {
+    position: relative;
+    width: 420px;
+    padding: 45px 35px;
+    text-align: center;
+    border: 1px solid #ffffff20;
+    border-radius: 25px;
+    background: #ffffff08;
+    backdrop-filter: blur(20px);
+    box-shadow:
+        0 25px 80px #00000088,
+        inset 0 0 30px #ffffff08;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+}
+
+/* Animated border */
+
+.profile-card::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    z-index: -1;
+    border-radius: 25px;
+    background: conic-gradient(
+        transparent,
+        #00f7ff,
+        transparent,
+        #8a2be2,
+        transparent
+    );
+    animation: rotate 5s linear infinite;
+}
+
+.profile-card::after {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    z-index: -1;
+    border-radius: 23px;
+    background: #080812;
+}
+
+@keyframes rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Avatar */
+
+.profile-image {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    color: #00f7ff;
+    border: 2px solid #00f7ff;
+    box-shadow:
+        0 0 20px #00f7ff,
+        inset 0 0 20px #00f7ff33;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    50% {
+        box-shadow:
+            0 0 45px #00f7ff,
+            inset 0 0 30px #00f7ff55;
+    }
+}
+
+/* Text */
+
+.hello {
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: #00f7ff;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+h1 span {
+    color: transparent;
+    background: linear-gradient(90deg, #00f7ff, #9d4edd);
+    background-clip: text;
+}
+
+.typing {
+    height: 25px;
+    font-size: 17px;
+    color: #b8b8c8;
+}
+
+#typing-text::after {
+    content: "|";
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+.description {
+    margin: 20px 0;
+    line-height: 1.6;
+    color: #aaaaba;
+    font-size: 14px;
+}
+
+/* Skills */
+
+.skills {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 25px;
+}
+
+.skills div {
+    padding: 7px 12px;
+    border: 1px solid #ffffff18;
+    border-radius: 20px;
+    background: #ffffff08;
+    color: #d5d5df;
+    font-size: 12px;
+    transition: 0.3s;
+}
+
+.skills div:hover {
+    color: #00f7ff;
+    border-color: #00f7ff;
+    box-shadow: 0 0 15px #00f7ff44;
+    transform: translateY(-3px);
+}
+
+/* Buttons */
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+button {
+    padding: 12px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.primary {
+    border: none;
+    color: #001014;
+    background: #00f7ff;
+    box-shadow: 0 0 20px #00f7ff55;
+}
+
+.primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 35px #00f7ff;
+}
+
+.secondary {
+    color: white;
+    border: 1px solid #ffffff30;
+    background: transparent;
+}
+
+.secondary:hover {
+    border-color: #9d4edd;
+    box-shadow: 0 0 20px #9d4edd55;
+    transform: translateY(-3px);
+}
+
+/* Socials */
+
+.socials {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.socials a {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ffffff20;
+    border-radius: 50%;
+    color: #aaa;
+    text-decoration: none;
+    font-size: 11px;
+    transition: 0.3s;
+}
+
+.socials a:hover {
+    color: #00f7ff;
+    border-color: #00f7ff;
+    box-shadow: 0 0 15px #00f7ff;
+    transform: translateY(-4px);
+}
+
+/* Scan effect */
+
+.scan-line {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    top: -10px;
+    background: #00f7ff;
+    box-shadow: 0 0 15px #00f7ff;
+    opacity: 0.4;
+    animation: scan 4s linear infinite;
+}
+
+@keyframes scan {
+    0% {
+        top: -10px;
+    }
+
+    100% {
+        top: 100%;
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 500px) {
+
+    .profile-card {
+        width: 90vw;
+        padding: 35px 20px;
+    }
+
+    h1 {
+        font-size: 34px;
+    }
+
+    .description {
+        font-size: 13px;
+    }
+}
